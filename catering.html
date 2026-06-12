@@ -352,25 +352,33 @@ body{line-height:1.78!important}
 html.lang-en .wa{left:auto;right:26px}
 html.lang-en #toTop{right:auto;left:26px}
 
-/* mobile collapse for nav split */
+/* mobile nav — fullscreen burger overlay for both lists */
 @media(max-width:980px){
-  header > .wrap.nav{gap:10px}
-  .nav-side{gap:8px}
-  .nav-cat{font-size:13px;padding:7px 12px}
-  .lang-toggle{height:30px}
+  header > .wrap.nav{gap:10px;padding-inline:18px!important}
+  .lang-toggle{height:30px;margin-inline-start:0}
   .lang-toggle button{font-size:11px;padding:0 10px}
-}
-@media(max-width:760px){
-  .nav-main, .nav-side > .nav-cta{display:none}
-  /* main nav goes into burger; lang toggle + catering pill stay visible in compact form */
-  .nav-side{gap:6px}
-  .nav-cat{font-size:12px;padding:6px 10px;letter-spacing:0}
-}
-@media(max-width:480px){
-  .nav-cat{display:none}  /* fully into burger drawer on tiny screens */
+  /* nav-side becomes a bottom-anchored overlay shown when burger is open */
+  .nav-side{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    padding:28px 40px 36px;
+    background:rgba(7,15,30,.98);
+    backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    opacity:0;visibility:hidden;transform:translateY(20px);
+    transition:.4s var(--ease);
+    z-index:95;
+  }
+  .nav-side.open{opacity:1;visibility:visible;transform:none}
+  .nav-side > li{display:flex;width:auto;justify-content:center}
+  .nav-cat{font-size:15px!important;padding:10px 22px!important;letter-spacing:.5px!important;display:inline-flex!important}
+  .nav-side .nav-cta{font-size:15px!important;padding:11px 24px!important;display:inline-flex!important}
 }
 .burger{display:none}
-@media(max-width:760px){.burger{display:flex}}
+@media(max-width:980px){.burger{display:flex;z-index:120;position:relative}}
 </style>
 <meta name="i18n-title" content="meta.title.catering">
 </head>
@@ -695,7 +703,14 @@ html.lang-en #toTop{right:auto;left:26px}
 
   // burger
   var burger=$('#burger'),links=$('#navlinks');
-  if(burger)burger.addEventListener('click',function(){burger.classList.toggle('x');links.classList.toggle('open')});
+  if(burger)burger.addEventListener('click',function(){burger.classList.toggle('x');links.classList.toggle('open');var ns=document.querySelector('.nav-side');if(ns)ns.classList.toggle('open')});
+  // close mobile menu after tapping any nav link
+  $$('.nav-main a, .nav-side a').forEach(function(a){a.addEventListener('click',function(){
+    var ns=document.querySelector('.nav-side');if(ns)ns.classList.remove('open');
+    var nm=document.getElementById('navlinks');if(nm)nm.classList.remove('open');
+    if(burger)burger.classList.remove('x');
+  })});
+
   $$('#navlinks a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');burger.classList.remove('x')})});
 
   // reveal observer
