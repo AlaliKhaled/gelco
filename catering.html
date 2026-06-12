@@ -410,16 +410,20 @@ html.lang-en #toTop{right:auto;left:26px}
 }
 
 @media(max-width:560px){
-  /* very small screens: icon-only catering pill */
+  /* very small screens: still show icon + text label */
   header > .wrap.nav{padding-inline:8px!important;gap:5px}
-  .nav-logo{height:48px!important}
-  header.scrolled .nav-logo{height:42px!important}
-  .nav-cat{padding:7px 10px!important;font-size:0!important}
-  .nav-cat span{display:none}
-  .nav-cat svg{width:17px!important;height:17px!important;color:var(--gold)}
+  .nav-logo{height:46px!important}
+  header.scrolled .nav-logo{height:40px!important}
+  .nav-cat{padding:6px 9px!important;font-size:10.5px!important;gap:4px!important;letter-spacing:0!important;line-height:1.15;max-width:140px}
+  .nav-cat span{display:inline}
+  .nav-cat svg{width:13px!important;height:13px!important;flex-shrink:0}
   .lang-toggle{height:26px}
   .lang-toggle button{font-size:10px;padding:0 7px}
   .nav-main > li > a{font-size:17px;padding:11px}
+}
+@media(max-width:380px){
+  /* tightest screens: nudge font smaller, allow 2-line wrap */
+  .nav-cat{font-size:9.5px!important;padding:5px 7px!important;line-height:1.1;max-width:120px;white-space:normal!important;text-align:center}
 }
 </style>
 <meta name="i18n-title" content="meta.title.catering">
@@ -439,7 +443,7 @@ html.lang-en #toTop{right:auto;left:26px}
       <li><a href="index.html#why" data-i18n="nav.why">لماذا جيلكو</a></li>
     </ul></nav>
     <ul class="nav-side">
-      <li><a href="catering.html" class="nav-cat" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2v8a3 3 0 003 3v9"/><path d="M6 2h6M9 13v9M16 2c-1 2-1 4 0 6s1 4 0 6v8"/></svg><span data-i18n="nav.catering">الإعاشة والمطبخ المركزي</span></a></li>
+      <li><a href="catering.html" class="nav-cat" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2v8a3 3 0 003 3v9"/><path d="M6 2h6M9 13v9M16 2c-1 2-1 4 0 6s1 4 0 6v8"/></svg><span data-i18n="nav.catering">الإعاشة والمطبخ الرئيسي</span></a></li>
       <li><div class="lang-toggle" id="langToggle"><button type="button" class="on" data-l="ar">AR</button><button type="button" data-l="en">EN</button></div></li>
       <li><a href="#quote" class="nav-cta" data-i18n="nav.quote">طلب عرض سعر</a></li>
     </ul>
