@@ -29,7 +29,7 @@
       'home.hero.title': 'نبني <span class="foil">النمو</span> ونصنع <span class="foil">الفرص</span>',
       'home.hero.motto': 'BUILDING GROWTH — CREATING OPPORTUNITIES',
       'home.hero.lede': 'شركة سعودية متخصصة في الاستثمار والتطوير التجاري وإدارة المشاريع والمطاعم، تنطلق من مكة المكرمة لبناء فرص نوعية وشراكات استراتيجية.',
-      'home.hero.cta1': 'اطلب شراكة',
+      'home.hero.cta1': 'اطلب خدمة',
       'home.hero.cta2': 'تعرّف علينا',
       'home.scroll': 'SCROLL',
 
